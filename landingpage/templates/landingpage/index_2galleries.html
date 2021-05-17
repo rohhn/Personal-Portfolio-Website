@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+{% block Title %}
+    Landingpage
+{% endblock %}
+
+{% block main-content %}
+    <section id="intro">
+        <div class="container-fluid text-center centerstage my-auto">
+            <div class="row">
+                <div>
+                    <img class="img-fluid main-logo" src="{% static 'landingpage/images/logo-big-white.png' %}">
+                </div>
+            </div>
+            <div class="row my-5">
+                <div class="text-center">
+                    <ul class="list-inline list-unstyled">
+                        <li class="list-inline-item">
+                            <a><i class="bi bi-instagram" style="font-size: 1.25rem;"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a><i class="bi bi-github" style="font-size: 1.25rem;"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a><i class="bi bi-linkedin" style="font-size: 1.25rem;"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% if images%}
+    <section id="gallery">
+        <div class="row text-center mb-5">
+            <div>
+                <h1>Gallery</h1>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row row-cols-auto align-content-center px-auto">
+                {% for image in images %}
+                    <div class="col my-2">
+                        <div>
+                           <a href="{{image.image_path.url}}"><img class="img-fluid" src="{{image.image_thumbnail_path.url}}"></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+<br/><br/>
+
+    {% if images%}
+    <section id="gallery2">
+        <div class="row text-center mb-5">
+            <div>
+                <h1 class="display-5">Gallery</h1>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-md-3 px-auto">
+                    {% for image in images %}
+                    <div class="col my-2">
+                        <div class="card bg-transparent">
+                            <img class="card-img" src="{{image.image_thumbnail_path.url}}">
+                            <div class="card-img-overlay ">
+                                <a href="{{image.image_path.url}}" style="height: 100%; width: 100%;"></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <script>
+        window.onscroll = () => {
+            var scrollTop = this.scrollTop();
+            console.log(scrollTop)
+            $('.centerstage').css({
+                opacity: () => {
+                    var elementHeight = this.height();
+                    console.log(elementHeight)
+                    return 1 - (elementHeight - scrollTop) / elementHeight;
+                }
+            });
+        };
+    </script>
+{% endblock %}
