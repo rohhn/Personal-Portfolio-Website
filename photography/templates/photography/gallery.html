@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block Title %}
+    Gallery
+{% endblock %}
+
+{% block head-content %}
+<link rel="stylesheet" href="{% static 'photography/css/masonry-gallery.css' %}">
+{% endblock %}
+
+{% block main-content %}
+
+    <section id="gallery" class="">
+        <div class="container-fluid">
+            <div class="row text-center mb-5">
+                <div>
+                    <h1 class="display-5">Gallery</h1>
+                </div>
+            </div>
+            {% if all_images %}
+            <div class="container">
+                <div class="masonry">
+                        {% for image in all_images %}
+                        <div class="mgrid" data-aos="zoom-in-up" data-aos-delay="100">
+                            <!-- <div class="hvr-grow"> -->
+                                <img class="img-fluid" src="{{image.image_thumbnail_path.url}}">
+                                <!-- <a class="mgrid__link" href="{{image.image_path.url}}"></a> -->
+                                <a class="mgrid__link" href="{% url 'image' image.pk %}"></a>
+                            <!-- </div> -->
+                        </div>
+                        {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}
