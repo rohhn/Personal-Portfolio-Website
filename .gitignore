@@ -9,7 +9,6 @@ docs/locale/
 node_modules/
 build/
 *.sqlite3
-*.jpg
 !migrations/
 *.vscode/
 *.pyc
