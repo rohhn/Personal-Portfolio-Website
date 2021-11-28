@@ -32,7 +32,7 @@ else:
     DEBUG = True
 
 ALLOWED_HOSTS = [
-        "https://rohan-portfolio-site.herokuapp.com/",
+        "https://rohan-website-app.herokuapp.com/",
         "127.0.0.1",
         "localhost"
     ]
