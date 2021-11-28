@@ -1,20 +1,52 @@
 from django.core.files.base import ContentFile
+from django.http.response import Http404
 from django.shortcuts import render
-from .models import Image
+from .models import *
 
 def index(request):
+
     images = Image.objects.filter(
-        tags__icontains='featured'
+        feature=True
     )
 
-    context = {'images':images}
+    context = {
+        'images':images
+    }
 
     return render(request, 'photography/index.html', context)
 
-def gallery(request):
-    images = Image.objects.all().order_by('posted_on')
+def album(request, album_name=None):
+    
+    try:
+        album = Album.objects.get(name=album_name)
+    except Album.DoesNotExist:
+        return Http404
+    else:
+        images = Image.objects.filter(album = album)
 
-    context = {'all_images':images}
+    context = {
+        'album':album,
+        'images':images
+    }
+    return render(request, 'photography/album.html', context)
+
+def gallery(request):
+
+    albums = Album.objects.all()
+    out = []
+    for album in albums:
+        temp = {
+            'album_thumbnail': Image.objects.filter(album=album).last(),
+            'name': album.name
+        }
+        out.append(temp)
+        
+    images = Image.objects.filter(feature=True)
+
+    context = {
+        'albums': out,
+        'featured_images': images
+    }
 
     return render(request, 'photography/gallery.html', context)
 

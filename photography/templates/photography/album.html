@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block Title %}
+    {{block.super}} | Gallery
+{% endblock %}
+
+{% block head-content %}
+<link rel="stylesheet" href="{% static 'photography/assets/css/masonry-gallery.css' %}">
+{% endblock %}
+
+{% block main-content %}
+
+    <section id="albums" class="">
+        <div class="container">
+            <div class="row text-center">
+                <div>
+                    <h1 class="display-5">{{album.name}}</h1>
+                </div>
+            </div>
+
+            <div class="container text-center w-25 bg-light mb-5">
+                <hr/>
+            </div>
+
+            <div class="row text-center mt-5">
+                    {% if images %}
+                        <div class="masonry">
+                            {% for image in images %}
+                                <div class="mgrid" data-aos-delay="100" data-aos="zoom-in-up">
+                                    <img class="img-fluid" src="{{image.image_path.url}}">
+                                    <a class="mgrid__link popup-image" href="{{image.image_path.url}}"></a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

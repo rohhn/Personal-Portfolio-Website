@@ -5,8 +5,18 @@ from io import BytesIO, StringIO
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 
+class Album(models.Model):
+    name = models.CharField(max_length=50)
+    hashtags = models.CharField(max_length=200)
+    date = models.DateTimeField(auto_now_add= True)
+
+    def __str__(self) -> str:
+        return self.name
+
 class Image(models.Model):
     title = models.CharField(max_length=100)
+    album = models.ForeignKey(Album, on_delete=models.CASCADE)
+    feature = models.BooleanField(default=False)
     posted_on = models.DateTimeField(auto_now_add= True)
     image_path = models.ImageField(upload_to='images/')
     tags = models.CharField(max_length=100)
@@ -42,3 +52,9 @@ class Image(models.Model):
         if not self.create_thumbnail():
             raise Exception("Error saving thumbnail.")
         super(Image, self).save(*args, **kwargs)
+
+class BasicInfo(models.Model):
+
+    bio = models.TextField(
+        max_length=1000
+    )

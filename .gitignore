@@ -10,9 +10,11 @@ node_modules/
 build/
 *.sqlite3
 *.jpg
-migrations/
+!migrations/
 *.vscode/
 *.pyc
 .DS_Store
 
 test*
+.env
+media/

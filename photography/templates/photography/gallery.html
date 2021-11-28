@@ -1,37 +1,98 @@
 {% extends "base.html" %}
 {% load static %}
 {% block Title %}
-    Gallery
+    {{block.super}} | Gallery
 {% endblock %}
 
 {% block head-content %}
-<link rel="stylesheet" href="{% static 'photography/css/masonry-gallery.css' %}">
+<link rel="stylesheet" href="{% static 'photography/assets/css/masonry-index.css' %}">
 {% endblock %}
 
 {% block main-content %}
 
-    <section id="gallery" class="">
-        <div class="container-fluid">
-            <div class="row text-center mb-5">
+    <section id="album-carousel">
+        <div class="container">
+            <div class="row text-center my-5" data-aos="fade-down" data-aos-delay="100">
                 <div>
-                    <h1 class="display-5">Gallery</h1>
+                    <h2 class="display-5">Albums</h2>
                 </div>
             </div>
-            {% if all_images %}
-            <div class="container">
-                <div class="masonry">
-                        {% for image in all_images %}
-                        <div class="mgrid" data-aos="zoom-in-up" data-aos-delay="100">
-                            <!-- <div class="hvr-grow"> -->
-                                <img class="img-fluid" src="{{image.image_thumbnail_path.url}}">
-                                <!-- <a class="mgrid__link" href="{{image.image_path.url}}"></a> -->
-                                <a class="mgrid__link" href="{% url 'image' image.pk %}"></a>
-                            <!-- </div> -->
-                        </div>
+            <div class="row">
+                <div id="album-carousel-container" class="container carousel slide carousel-fade" data-mdb-ride="carousel" data-aos="fade-up" data-aos-delay="100" style="height: 400px;">
+                    <div class="carousel-indicators">
+                        {% for album in albums %}
+                            <button type="button" id="carousel-indicator-{{forloop.counter0}}" data-mdb-target="#album-carousel-container" data-mdb-slide-to="{{forloop.counter0}}" aria-current="true" aria-label="{{album.name}}"></button>
                         {% endfor %}
+                    </div>
+                    <div class="carousel-inner">
+                        {% for album in albums %}
+                            <div class="carousel-item bg-image" id="carousel-inner-{{forloop.counter0}}" style="height: 400px;">
+                                <a href="gallery/album/{{album.name}}" class="">
+                                    <img src="{{album.album_thumbnail.image_path.url}}" class="w-100">
+                                    <div class="carousel-caption mask d-flex align-items-center justify-content-center text-center" style="background-color: rgba(0, 0, 0, 0.5);">
+                                        <p class="fs-2 fw-lighter hover-underline-right-to-left">{{album.name}}</p>
+                                        <!-- <a class="" href="gallery/album/{{album.name}}"><button class="btn btn-sm btn-outline-light" data-mdb-ripple-color="dark">View Album</button></a> -->
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-mdb-target="#album-carousel-container" data-mdb-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-mdb-target="#album-carousel-container" data-mdb-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container w-25 bg-light my-5">
+        <hr/>
+    </div>
+    <section id="featured-images mt-5">
+        <div class="container">
+            <div class="row text-center mb-5" data-aos="fade-down" data-aos-delay="150">
+                <div>
+                    <h2 class="display-5">Featured Images</h2>
+                </div>
+            </div>
+            {% if featured_images %}
+            <div class="row">
+                <div class="container">
+                    <div class="masonry">
+                            {% for image in featured_images %}
+                            <div class="mgrid bg-image hover-overlay" data-aos="zoom-in-up" data-aos-delay="150">
+                                <img class="img-fluid mfp-zoom" src="{{image.image_thumbnail_path.url}}">
+                                <!-- <a class="mgrid__link popup-image" href="{{image.image_thumbnail_path.url}}" title="{{image.title}}"></a> -->
+                                <div class="mask" style="background-image: rgba(0,0,0,0.8);">
+                                    <div class="d-flex justify-content-center align-items-center h-100">
+                                        <a class="mgrid__link popup-image fw-lighter fs-6" href="{{image.image_thumbnail_path.url}}" title="{{image.title}}">{{image.title}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                    </div>
                 </div>
             </div>
             {% endif %}
         </div>
     </section>
+{% endblock %}
+
+
+{% block scripts-content %}
+
+<script>
+    $(document).ready(function() {
+
+        document.getElementById("carousel-indicator-0").setAttribute("class","active");
+        document.getElementById("carousel-inner-0").classList.add("active");
+        
+    });
+</script>
+
 {% endblock %}

@@ -1,7 +1,7 @@
-{% extends "base.html" %}
+{% extends "photography/gallery.html" %}
 {% load static %}
 {% block Title %}
-    Gallery | Image
+    {{block.super}} | {{image.title}}
 {% endblock %}
 
 {% block main-content %}
@@ -9,25 +9,16 @@
     <section id="image">
         <div class="container px-5 mt-5">
             <div class="card bg-dark-translucent p-3">
-                <div class="row row-cols-sm-1 row-cols-md-2 g-0">
-                    <div class="col col-md-6">
-                        <h2 class="display-5 card-title">{{image.title}}</h2>
+                <div class="row row-cols-sm-1 row-cols-md-1 row-cols-lg-2">
+                    <div class="col col-sm-12 col-md-12 col-lg-4">
+                        <h2 class="card-title display-5">{{image.title}}</h2>
+                        <p class="card-text">
+                            test
+                        </p>
                     </div>
-                    <div class="col col-md-6 px-auto">
-                        <img id="display-img" class="img-fluid" src="{{image.image_path.url}}">
+                    <div class="col col-sm-12 col-md-12 col-lg-8 mx-auto">
+                        <img id="display-img" class="img-fluid" src="{{image.image_thumbnail_path.url}}">
                     </div>
-                </div>
-            </div>
-            <br/><br/>
-            <div class="card bg-dark-translucent p-2">
-                <img id="display-img" class="img-fluid card-img-top" src="{{image.image_path.url}}">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        {{image.title}}
-                    </h5>
-                    <p class="card-text">
-                        Testing
-                    </p>
                 </div>
             </div>
         </div>
