@@ -8,12 +8,12 @@ docs/_build/
 docs/locale/
 node_modules/
 build/
-*.jpg
 !migrations/
+
 *.vscode/
 *.pyc
 .DS_Store
-
+db.sqlite3
 test*
 .env
 media/

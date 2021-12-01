@@ -10,10 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
-import django_on_heroku
 from pathlib import Path
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(override=True)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,9 +31,7 @@ else:
     DEBUG = True
 
 ALLOWED_HOSTS = [
-        "https://rohan-website-app.herokuapp.com/",
-        "127.0.0.1",
-        "localhost"
+        
     ]
 
 
@@ -85,12 +82,24 @@ WSGI_APPLICATION = 'mywebsite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if os.getenv("DEPLOYMENT_ENVIRONMENT") == "PROD":
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.getenv("PSQL_DATABASE_NAME"),
+            'USER': os.getenv("PSQL_DATABASE_USERNAME"),
+            'PASSWORD': os.getenv("PSQL_DATABASE_PASSWORD"),
+            'HOST': '',
+            'PORT': '',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
@@ -129,7 +138,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-if os.getenv('DEPLOYMENT_ENVIRONMENT') == 'PROD':
+if os.getenv('USE_S3') == "True":
 
     AWS_S3_OBJECT_PARAMETERS = {
         'CacheControl': 'max-age=86400',
@@ -151,14 +160,9 @@ if os.getenv('DEPLOYMENT_ENVIRONMENT') == 'PROD':
 
     
 else:
-    
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
-    )
 
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
-
-django_on_heroku.settings(locals())
