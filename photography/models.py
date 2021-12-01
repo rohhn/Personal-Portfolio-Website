@@ -22,6 +22,9 @@ class Image(models.Model):
     tags = models.CharField(max_length=100)
     image_thumbnail_path = models.ImageField(upload_to='images/thumbnails/', editable=False)
 
+    def __str__(self) -> str:
+        return "{}-{}-{}".format(self.title, self.album.name, self.feature)
+
     def create_thumbnail(self):
 
         img = Img.open(self.image_path)

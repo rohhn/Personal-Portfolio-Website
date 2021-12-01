@@ -8,8 +8,8 @@ docs/_build/
 docs/locale/
 node_modules/
 build/
-*.sqlite3
 !migrations/
+*.sqlite3
 *.vscode/
 *.pyc
 .DS_Store
