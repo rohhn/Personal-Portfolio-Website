@@ -9,5 +9,6 @@ urlpatterns = [
     path('gallery',views.gallery, name='gallery'),
     path('gallery/album/<str:album_name>',views.album, name='album'),
     path('gallery/image/<int:pk>/', views.image, name='image'),
+    path('gallery/all', views.images, name='all_images'),
     path('about/', TemplateView.as_view(template_name='photography/about.html'), name='about'),
 ]

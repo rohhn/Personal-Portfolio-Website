@@ -50,8 +50,16 @@ def gallery(request):
 
     return render(request, 'photography/gallery.html', context)
 
-def image(request, pk):
-    image = Image.objects.get(pk= pk)
+def images(request):
 
+    images = Image.objects.all().order_by("-posted_on")
+    context = {'images':images}
+
+    return render(request, 'photography/all_images.html', context)
+
+def image(request, pk):
+
+    image = Image.objects.get(pk=pk)
     context = {'image':image}
+
     return render(request, 'photography/image.html', context)

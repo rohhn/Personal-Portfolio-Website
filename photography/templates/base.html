@@ -97,6 +97,12 @@
             AOS.init();
 
             let body = document.querySelector('body')
+            let footer =  document.querySelector('footer')
+            console.log(body.clientHeight)
+            console.log(body.scrollHeight)
+            if (body.clientHeight >= body.scrollHeight) {
+                footer.classList.add('fixed-bottom')
+            }
 
         });
     </script>
