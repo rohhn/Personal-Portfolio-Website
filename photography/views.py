@@ -22,7 +22,7 @@ def album(request, album_name=None):
     except Album.DoesNotExist:
         return Http404
     else:
-        images = Image.objects.filter(album = album).order_by('posted_on')
+        images = Image.objects.filter(album = album).order_by('-posted_on')
 
     context = {
         'album':album,
@@ -41,7 +41,7 @@ def gallery(request):
         }
         out.append(temp)
         
-    images = Image.objects.filter(feature=True).order_by('posted_on')
+    images = Image.objects.filter(feature=True).order_by('?')
 
     context = {
         'albums': out,
