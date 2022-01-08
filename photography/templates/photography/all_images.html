@@ -28,7 +28,7 @@
                             {% for image in images %}
                                 <div class="mgrid" data-aos-delay="100" data-aos="zoom-in-up">
                                     <img class="img-fluid" src="{{image.image_path.url}}" title="{{image.title}}-{{image.album.name}}">
-                                    <a class="mgrid__link popup-image" href="{{image.image_path.url}}" title="{{image.title}}-{{image.album.name}}"></a>
+                                    <a class="mgrid__link popup-image" href="{{image.image_path.url}}" data-title="{{image.album.name}} - {{image.title}}"></a>
                                 </div>
                             {% endfor %}
                         </div>

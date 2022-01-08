@@ -21,10 +21,10 @@
         <div id="body-bg-2"></div>
         <div id="body-bg-3"></div>
 
-        <nav class="navbar sticky-top navbar-expand-md fw-light px-5" id="navbar">
+        <nav class="navbar sticky-top navbar-expand-lg fw-light px-5" id="navbar">
                 <a id="navbar-logo" class="navbar-brand px-3" href="/"><img class="navbar-brand-img" style="max-height: 50px;" src="{% static 'photography/assets/images/navbar_logo.png' %}" alt="Rohan"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler text-light bg-transparent" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarToggler">
                     <ul class="navbar-nav ms-auto">
@@ -38,7 +38,7 @@
                 </div>
         </nav>
 
-        <main class="container-fluid pb-3 position-relative">
+        <main class="container-fluid pb-3">
             {% block main-content %}{% endblock %}
         </main>
         
@@ -78,34 +78,13 @@
     <script type="text/javascript" src="{% static 'photography/assets/js/mdb.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'photography/assets/js/aos.js' %}"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <!-- <script type="text/javascript" src="{% static 'photography/assets/js/jquery.magnific-popup.js' %}"></script> -->
-    <script type="text/javascript" src="{% static 'photography/assets/js/jquery.magnific-popup.min.js' %}"></script>
-    <script>
-        $(document).ready(function() {
-            
-            $('.popup-image').magnificPopup({
-                type: 'image',
-                mainClass: 'mfp-zoom',
-                closeonContentClick: false,
-                closeBtnInside: false,
-		        fixedContentPos: true,
-                zoom: {
-                    enabled: false
-                }
-            });
-
-            AOS.init();
-
-            let body = document.querySelector('body')
-            let footer =  document.querySelector('footer')
-            console.log(body.clientHeight)
-            console.log(body.scrollHeight)
-            if (body.clientHeight >= body.scrollHeight) {
-                footer.classList.add('fixed-bottom')
-            }
-
-        });
-    </script>
+    <!-- <script type="text/javascript" src="{% static 'photography/assets/js/jquery.magnific-popup.min.js' %}"></script> -->
+    <script type="text/javascript" src="{% static 'photography/assets/js/jquery.magnific-popup.js' %}"></script>
+    <script type="text/javascript" src="{% static 'photography/assets/js/myjs.js' %}"></script>
+    
+    <!-- <script>
+        
+    </script> -->
 
     {% block scripts-content %}{% endblock %}
 </html>

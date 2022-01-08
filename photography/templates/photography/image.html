@@ -1,4 +1,4 @@
-{% extends "photography/gallery.html" %}
+{% extends "base.html" %}
 {% load static %}
 {% block Title %}
     {{block.super}} | {{image.title}}
@@ -40,21 +40,13 @@
     </script> -->
     <script>
         $(document).ready(function() {
+            
             let body = document.querySelector('body');
-            console.log(body.clientHeight);
-
             let nav = document.querySelector('nav');
-            console.log(nav.clientHeight);
-
             let footer = document.querySelector('footer');
-            console.log(footer.clientHeight);
-
             let display_image = document.querySelector('#display-img');
-            console.log((body.clientHeight - nav.clientHeight - footer.clientHeight - 150));
             display_image.style.maxHeight = (body.clientHeight - nav.clientHeight - footer.clientHeight - 150) + 'px';
 
-            footer.classList.add('position-relative')
-            footer.classList.add('bottom-0')
         });
     </script>
 {% endblock %}

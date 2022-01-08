@@ -26,9 +26,9 @@
                     {% if images %}
                         <div class="masonry">
                             {% for image in images %}
-                                <div class="mgrid" data-aos-delay="100" data-aos="zoom-in-up">
+                                <div class="mgrid" data-aos="zoom-in-up">
                                     <img class="img-fluid" src="{{image.image_path.url}}">
-                                    <a class="mgrid__link popup-image" href="{{image.image_path.url}}"></a>
+                                    <a class="mgrid__link popup-image" href="{{image.image_path.url}}" data-title={{image.title}}></a>
                                 </div>
                             {% endfor %}
                         </div>

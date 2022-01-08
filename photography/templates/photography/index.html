@@ -41,23 +41,15 @@
     $(document).ready(function() {
 
         let body = document.querySelector('body');
-        // console.log(body.clientHeight);
-
         let nav = document.querySelector('nav');
-        // console.log(nav.clientHeight);
-        
         document.getElementById('navbar-logo').style.display='none';
-
         let footer = document.querySelector('footer');
-        footer.style.display = 'none';
-        // console.log(footer.clientHeight);
-
+        footer.innerHTML=""
         let intro_section = document.querySelector('#intro');
-        console.log((body.clientHeight - nav.clientHeight - footer.clientHeight - 150));
         intro_section.style.height = (body.clientHeight - nav.clientHeight) + 'px';
+        console.log(body.clientHeight)
+        console.log(body.scrollHeight)
 
-        // footer.classList.add('position-relative')
-        // footer.classList.add('bottom-0')
     });
 </script>
 {% endblock %}

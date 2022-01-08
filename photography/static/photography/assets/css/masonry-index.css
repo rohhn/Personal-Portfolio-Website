@@ -1,21 +1,21 @@
 .masonry {
     columns: 4;
-    column-gap: 16px;
+    column-gap: 15px;
   }
 
   @media (min-width: 576px) {
     .masonry {
-        columns: 2;
+        columns: 1;
       }
   }
   @media (min-width: 768px) {
     .masonry {
-        columns: 2;
+        columns: 1;
       }
   }
   @media (min-width: 992px) {
     .masonry {
-        columns: 3;
+        columns: 2;
       }
   }
   @media (min-width: 1200px) {

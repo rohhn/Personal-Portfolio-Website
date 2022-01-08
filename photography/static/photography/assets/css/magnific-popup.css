@@ -59,33 +59,12 @@
   cursor: -moz-zoom-out;
   cursor: -webkit-zoom-out;
   cursor: zoom-out; }
-  
-/* ==================== */
-.mfp-zoom .mfp-container .mfp-zoom.mfp-bg {
+
+.mfp-zoom {
   cursor: pointer;
   cursor: -webkit-zoom-in;
   cursor: -moz-zoom-in;
-  cursor: zoom-in;
-  opacity: 0;
-	-webkit-backface-visibility: hidden;
-	-webkit-transition: all 0.3s ease-out; 
-	-moz-transition: all 0.3s ease-out; 
-	-o-transition: all 0.3s ease-out; 
-	transition: all 0.3s ease-out; }
-
-.mfp-zoom.mfp-ready .mfp-container {
-  opacity: 1;
-}
-
-.mfp-zoom.mfp-ready.mfp-bg {
-  opacity: 0.8;
-}
-
-.mfp-zoom.mfp-removing .mfp-container, 
-.mfp-zoom.mfp-removing.mfp-bg {
-	opacity: 0;
-}
-/* ==================== */
+  cursor: zoom-in; }
 
 .mfp-auto-cursor .mfp-content {
   cursor: auto; }
