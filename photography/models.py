@@ -1,4 +1,5 @@
 import os
+from uuid import uuid4
 from django.db import models
 from PIL import Image as Img
 from io import BytesIO, StringIO
@@ -36,7 +37,7 @@ class Genre(models.Model):
 def rename_image(instance, filename):
     _, extension = os.path.splitext(filename)
 
-    new_file_name = f"{instance.album.name}-{instance.pk}-{instance.title}{extension}".replace(" ", "_")
+    new_file_name = f"{instance.album.name}-{instance.title}-{uuid4().hex}{extension}".replace(" ", "_")
 
     return os.path.join('images', new_file_name)
 
@@ -44,7 +45,7 @@ def rename_image(instance, filename):
 def rename_thumbnail(instance, filename):
     _, extension = os.path.splitext(filename)
 
-    new_file_name = f"{instance.album.name}-{instance.pk}-{instance.title}{extension}".replace(" ", "_")
+    new_file_name = f"{instance.album.name}-{instance.title}-{uuid4().hex}{extension}".replace(" ", "_")
 
     return os.path.join('images/thumbnails/', new_file_name)
 
