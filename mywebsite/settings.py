@@ -30,7 +30,7 @@ if os.getenv("DEPLOYMENT_ENVIRONMENT") == "PROD":
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split()
 
 # Application definition
 
@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'storages',
-    'photography'
+    'photography',
+    'django_cleanup.apps.CleanupConfig'
 ]
 
 MIDDLEWARE = [
