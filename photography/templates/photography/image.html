@@ -1,44 +1,44 @@
 {% extends "base.html" %}
 {% load static %}
 {% block Title %}
-    {{block.super}} | {{image.title}}
+{{block.super}} | {{image.title}}
 {% endblock %}
 
 {% block main-content %}
 
-    <section id="image">
-        <div class="container px-5 mt-5">
-            <div class="card bg-dark-translucent p-3">
-                <div class="row row-cols-sm-1 row-cols-md-1 row-cols-lg-2">
-                    <div class="col col-sm-12 col-md-12 col-lg-4 py-3 px-5">
-                        <h2 class="card-title display-5">{{image.title}}</h2>
-                        <p class="card-text fs-6">
-                            {% if image.description %}
-                                {{image.description}}
-                            {% else %}
-                                No description found.
-                            {% endif %}
-                        </p>
-                    </div>
-                    <div class="col col-sm-12 col-md-12 col-lg-8 justify-content-center align-items-center d-flex">
-                        <img id="display-img" class="img-fluid" src="{{image.image_thumbnail_path.url}}">
-                    </div>
+<section id="image">
+    <div class="container px-5 mt-5">
+        <div class="card bg-dark-translucent p-3">
+            <div class="row row-cols-sm-1 row-cols-md-1 row-cols-lg-2">
+                <div class="col col-sm-12 col-md-12 col-lg-4 py-3 px-5">
+                    <h2 class="card-title display-5">{{image.title}}</h2>
+                    <p class="card-text fs-6">
+                        {% if image.description %}
+                        {{image.description}}
+                        {% else %}
+                        No description found.
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col col-sm-12 col-md-12 col-lg-8 justify-content-center align-items-center d-flex">
+                    <img id="display-img" class="img-fluid" src="{{image.thumbnail.url}}">
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 {% endblock %}
 
 {% block scripts-content %}
-    <!-- <script>
-        $(document).ready(function() {
-            let main = document.querySelector('main');
-            main.classList.add('h-75');
-        });
-        // console.log(document.querySelector('main').getAttributeNames())
-    </script> -->
-    <script>
+<!-- <script>
+    $(document).ready(function() {
+        let main = document.querySelector('main');
+        main.classList.add('h-75');
+    });
+    // console.log(document.querySelector('main').getAttributeNames())
+</script> -->
+<script>
         $(document).ready(function() {
             
             let body = document.querySelector('body');
@@ -48,5 +48,6 @@
             display_image.style.maxHeight = (body.clientHeight - nav.clientHeight - footer.clientHeight - 150) + 'px';
 
         });
-    </script>
+
+</script>
 {% endblock %}

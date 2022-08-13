@@ -1,100 +1,122 @@
 <!DOCTYPE html>
 {% load static %}
 <html>
-    <head>
-        <title>
-            {% block Title %}Rohan Deshmukh{% endblock %}
-        </title>
-        <!-- <link rel="stylesheet" type="text/css" href="{% static 'photography/assets/css/bootstrap.css' %}">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"> -->
-        <link rel="stylesheet" href="{% static 'photography/assets/css/mdb.min.css' %}">
-        <link rel="stylesheet" href="{% static 'photography/assets/css/parallax.css' %}">
-        <link rel="stylesheet" href="{% static 'photography/assets/css/aos.css' %}">
-        <link rel="stylesheet" href="{% static 'photography/assets/css/hover.css' %}">
-        <link rel="stylesheet" href="{% static 'photography/assets/css/mycss.css' %}">
-        <link rel="stylesheet" href="{% static 'photography/assets/css/magnific-popup.css' %}">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-        {%block head-content%}{% endblock %}
+<head>
+    <title>
+        {% block Title %}Rohan Deshmukh{% endblock %}
+    </title>
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'photography/assets/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"> -->
+    <link rel="stylesheet" href="{% static 'photography/assets/css/mdb.min.css' %}">
+    <link rel="stylesheet" href="{% static 'photography/assets/css/parallax.css' %}">
+    <link rel="stylesheet" href="{% static 'photography/assets/css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'photography/assets/css/hover.css' %}">
+    <link rel="stylesheet" href="{% static 'photography/assets/css/mycss.css' %}">
+    <link rel="stylesheet" href="{% static 'photography/assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    {% block head-content %}{% endblock %}
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVTQB4KSKK"></script>
-        <script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVTQB4KSKK"></script>
+    <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
             gtag('config', 'G-EVTQB4KSKK');
-        </script>
-    </head>
-    <body class="position-relative">
-        <div id="body-bg-1"></div>
-        <div id="body-bg-2"></div>
-        <div id="body-bg-3"></div>
 
-        <nav class="navbar sticky-top navbar-expand-lg fw-light px-5" id="navbar">
-                <a id="navbar-logo" class="navbar-brand px-3" href="/"><img class="navbar-brand-img" style="max-height: 50px;" src="{% static 'photography/assets/images/navbar_logo.png' %}" alt="Rohan"></a>
-                <button class="navbar-toggler text-light bg-transparent" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarToggler">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link hover-underline-center-out" href="/gallery">Images</a>
+    </script>
+</head>
+<body>
+    <div id="body-bg-1"></div>
+    <div id="body-bg-2"></div>
+    <div id="body-bg-3"></div>
+
+    <nav class="navbar sticky-top navbar-expand-lg fw-light px-5 justify-content-end" id="navbar">
+        <a id="navbar-logo" class="navbar-brand px-3 justify-content start" href="/">
+            <img class="navbar-brand-img" style="max-height: 50px;" src="{% static 'photography/assets/images/navbar_logo.png' %}" alt="Rohan">
+        </a>
+        <button class="navbar-toggler text-light bg-transparent" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link hover-underline-center-out" href="/gallery">Gallery</a>
+                </li>
+                {% if navbar_elements.travel_diaries %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="link" data-mdb-toggle="dropdown" aria-expanded="false">
+                      Travel Diaries
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
+                        {% for diary in navbar_elements.travel_diaries %}
+                          <li>
+                            <a class="dropdown-item" href="/travels/{{diary.name}}" style="text-transform:capitalize">{{diary.title}}</a>
+                          </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link hover-underline-center-out" href="/about">About me</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container-fluid pb-3 position-relative">
+        {% block main-content %}{% endblock %}
+    </main>
+
+    <footer class="fw-lighter fs-6 mt-3">
+        <div class="container-fluid py-2 mt-5 bg-dark-opaque">
+            <div class="row row-cols-2">
+                <div class="col text-start px-5">
+                            <span>
+                                <p class="my-auto">&#169; 2021 Rohan Deshmukh | Built with Python Django</p>
+                            </span>
+
+                </div>
+                <div class="col text-end px-5">
+                    <ul class="list-inline list-unstyled my-auto">
+                        <li class="list-inline-item mx-2">
+                            <a target="_blank" href="https://www.instagram.com/cosmicpasta/"><i
+                                    class="fab fa-instagram white-text hvr-grow" style="font-size: 1.25rem;"></i></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link hover-underline-center-out" href="/about">About me</a>
+                        <li class="list-inline-item mx-2">
+                            <a target="_blank" href="https://github.com/rohhn/"><i class="fab fa-github white-text hvr-grow"
+                                                                                   style="font-size: 1.25rem;"></i></a>
                         </li>
                     </ul>
                 </div>
-        </nav>
-
-        <main class="container-fluid pb-3">
-            {% block main-content %}{% endblock %}
-        </main>
-        
-        <footer class="fw-lighter fs-6 mt-3">
-            <div class="container-fluid py-2 mt-5 bg-dark-opaque">
-                <div class="row row-cols-2">
-                    <div class="col text-start px-5">
-                        <span>
-                            <p class="my-auto">&#169; 2021 Rohan Deshmukh | Built with Python Django</p>
-                        </span>
-                        
-                    </div>
-                    <div class="col text-end px-5">
-                        <ul class="list-inline list-unstyled my-auto">
-                            <li class="list-inline-item mx-2">
-                                <a target="_blank" href="https://www.instagram.com/cosmicpasta/"><i class="fab fa-instagram white-text hvr-grow" style="font-size: 1.25rem;"></i></a>
-                            </li>
-                            <li class="list-inline-item mx-2">
-                                <a target="_blank" href="https://github.com/rohhn/"><i class="fab fa-github white-text hvr-grow" style="font-size: 1.25rem;"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
-        </footer>
-    </body>
+        </div>
+    </footer>
+</body>
 
-    <script>
+<script>
         window.onscroll = () => {
         const nav = document.querySelector('nav');
         const footer = document.querySelector('footer');
         const body = document.querySelector('main');
         if(this.scrollY <= 100) nav.className = 'navbar sticky-top navbar-expand-md navbar-dark bg-transparent fw-light px-5'; else nav.className = 'navbar sticky-top navbar-expand-md navbar-dark bg-dark fw-light px-5';
       };
-    </script>
 
-    <script type="text/javascript" src="{% static 'photography/assets/js/mdb.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'photography/assets/js/aos.js' %}"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <!-- <script type="text/javascript" src="{% static 'photography/assets/js/jquery.magnific-popup.min.js' %}"></script> -->
-    <script type="text/javascript" src="{% static 'photography/assets/js/jquery.magnific-popup.js' %}"></script>
-    <script type="text/javascript" src="{% static 'photography/assets/js/myjs.js' %}"></script>
-    
-    <!-- <script>
-        
-    </script> -->
+</script>
 
-    {% block scripts-content %}{% endblock %}
+<script type="text/javascript" src="{% static 'photography/assets/js/mdb.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'photography/assets/js/aos.js' %}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="{% static 'photography/assets/js/jquery.magnific-popup.min.js' %}"></script> -->
+<script type="text/javascript" src="{% static 'photography/assets/js/jquery.magnific-popup.js' %}"></script>
+<script type="text/javascript" src="{% static 'photography/assets/js/myjs.js' %}"></script>
+
+<!-- <script>
+
+</script> -->
+
+{% block scripts-content %}{% endblock %}
 </html>

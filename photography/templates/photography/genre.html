@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row text-center">
             <div>
-                <h1 class="display-5">Gallery</h1>
+                <h1 class="display-5">{{genre.name}}</h1>
             </div>
         </div>
 
@@ -26,10 +26,9 @@
             {% if images %}
             <div class="masonry">
                 {% for image in images %}
-                <div class="mgrid" data-aos-delay="100" data-aos="zoom-in-up">
-                    <img class="img-fluid" src="{{image.image.url}}" title="{{image.title}}-{{image.album.name}}">
-                    <a class="mgrid__link popup-image" href="{{image.image.url}}"
-                       data-title="{{image.album.name}} - {{image.title}}"></a>
+                <div class="mgrid" data-aos="zoom-in-up">
+                    <img class="img-fluid" src="{{image.image.url}}">
+                    <a class="mgrid__link popup-image" href="{{image.image.url}}" data-title={{image.title}}></a>
                 </div>
                 {% endfor %}
             </div>

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block Title %}
-    {{block.super}}
+{{block.super}}
 {% endblock %}
 
 {% block head-content %}
@@ -9,30 +9,33 @@
 {% endblock %}
 
 {% block main-content %}
-    <section id="intro" class="">
-        <div class="container-fluid text-center position-relative top-25">
-            <div class="row">
-                <div>
-                    <img class="img-fluid main-logo" data-aos="fade-up" data-aos-delay="100" src="{% static 'photography/assets/images/main_index_logo.png' %}" alt="Rohan D">
-                </div>
-            </div>
-            <div class="row mt-4 mb-2" data-aos="fade-up" data-aos-delay="110">
-                <p class="fw-lighter fs-5">Programmer, Photographer</p>
-            </div>
-            <div class="row my-2" data-aos="fade-up" data-aos-delay="110">
-                <div class="text-center">
-                    <ul class="list-inline list-unstyled">
-                        <li class="list-inline-item mx-2">
-                            <a target="_blank" href="https://www.instagram.com/cosmicpasta/"><i class="fab fa-instagram white-text hvr-grow" style="font-size: 1.35rem;"></i></a>
-                        </li>
-                        <li class="list-inline-item mx-2">
-                            <a target="_blank" href="https://github.com/rohhn"><i class="fab fa-github white-text hvr-grow" style="font-size: 1.35rem;"></i></a>
-                        </li>
-                    </ul>
-                </div>
+<section id="intro" class="">
+    <div class="container-fluid text-center position-fixed top-25">
+        <div class="row">
+            <div>
+                <img class="img-fluid main-logo" data-aos="fade-up" data-aos-delay="100"
+                     src="{% static 'photography/assets/images/main_index_logo.png' %}" alt="Rohan D">
             </div>
         </div>
-    </section>
+        <div class="row mt-4 mb-2" data-aos="fade-up" data-aos-delay="110">
+            <p class="fw-lighter fs-5">Programmer, Photographer</p>
+        </div>
+        <div class="row my-2" data-aos="fade-up" data-aos-delay="110">
+            <div class="text-center">
+                <ul class="list-inline list-unstyled">
+                    <li class="list-inline-item mx-2">
+                        <a target="_blank" href="https://www.instagram.com/cosmicpasta/"><i
+                                class="fab fa-instagram white-text hvr-grow" style="font-size: 1.35rem;"></i></a>
+                    </li>
+                    <li class="list-inline-item mx-2">
+                        <a target="_blank" href="https://github.com/rohhn"><i class="fab fa-github white-text hvr-grow"
+                                                                              style="font-size: 1.35rem;"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}
 
@@ -42,14 +45,17 @@
 
         let body = document.querySelector('body');
         let nav = document.querySelector('nav');
+
+        // Hide the logo on landing page
         document.getElementById('navbar-logo').style.display='none';
+
+        // Hide the footer on landing page
         let footer = document.querySelector('footer');
-        footer.innerHTML=""
+        footer.style.display='none';
+
         let intro_section = document.querySelector('#intro');
         intro_section.style.height = (body.clientHeight - nav.clientHeight) + 'px';
-        console.log(body.clientHeight)
-        console.log(body.scrollHeight)
-
     });
+
 </script>
 {% endblock %}

@@ -1,0 +1,38 @@
+[
+  {
+    "pk": 1,
+    "model": "photography.Album",
+    "fields": {
+      "name": "misc",
+      "hashtags": null
+    }
+  },
+  {
+    "pk": 1,
+    "model": "photography.Genre",
+    "fields": {
+      "name": "astrophotography"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "photography.Genre",
+    "fields": {
+      "name": "landscape"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "photography.Genre",
+    "fields": {
+      "name": "wildlife"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "photography.Genre",
+    "fields": {
+      "name": "portraits"
+    }
+  }
+]

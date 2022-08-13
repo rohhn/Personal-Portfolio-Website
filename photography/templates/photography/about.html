@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block Title %}
-    {{block.super}}
+{{block.super}}
 {% endblock %}
 
 {% block head-content %}
@@ -9,26 +9,27 @@
 {% endblock %}
 
 {% block main-content %}
-    <section id="about" class="">
-        <div class="container-fluid mb-5">
-            <div class="row mt-5">
-                <div class="container w-50 d-flex align-items-center justify-content-center">
-                    <img class="rounded-circle" data-aos="fade-down" data-aos-delay="100" data-aos-duration="300" src="{% static 'photography/assets/images/profile.jpg' %}" alt="Rohan D" height="300px">
-                </div>
-            </div>
-            <div class="row mt-5" data-aos="fade-up" data-aos-delay="120">
-                <div class="container w-100 d-flex align-items-center justify-content-center">
-                    <h2 class="display-5 hover-underline-center-out">Rohan Deshmukh</h2>
-                </div>
-            </div>
-            <div class="row mt-4 mb-2" data-aos="fade-up" data-aos-delay="140">
-                <div class="container w-100 d-flex align-items-center justify-content-center">
-                    <p class="fs-6 fw-lighter text-center">Techie on a weekday, photographer on the weekend!
-                    </p>
-                </div>
+<section id="about" class="">
+    <div class="container-fluid mb-5">
+        <div class="row mt-5">
+            <div class="container w-50 d-flex align-items-center justify-content-center">
+                <img class="rounded-circle" data-aos="fade-down" data-aos-delay="100" data-aos-duration="300"
+                     src="{% static 'photography/assets/images/profile.jpg' %}" alt="Rohan D" height="300px">
             </div>
         </div>
-    </section>
+        <div class="row mt-5" data-aos="fade-up" data-aos-delay="120">
+            <div class="container w-100 d-flex align-items-center justify-content-center">
+                <h2 class="display-5 hover-underline-center-out">Rohan Deshmukh</h2>
+            </div>
+        </div>
+        <div class="row mt-4 mb-2" data-aos="fade-up" data-aos-delay="140">
+            <div class="container w-100 d-flex align-items-center justify-content-center">
+                <p class="fs-6 fw-lighter text-center">Techie on a weekday, explorer on the weekend!
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}
 
@@ -40,5 +41,6 @@
         // body.setAttribute("height","100vh")
 
     });
+
 </script>
 {% endblock %}
