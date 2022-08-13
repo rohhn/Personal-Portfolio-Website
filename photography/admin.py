@@ -39,3 +39,13 @@ class TravelDiaryAdmin(admin.ModelAdmin):
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
     name = 'Name'
+
+
+@admin.register(ProfilePhoto)
+class ProfilePhotoAdmin(admin.ModelAdmin):
+
+    def image_tag(self, obj):
+        return html.mark_safe('<img src="%s" width="150" height="150" />' % obj.image.url)
+    image_tag.short_description = "image"
+
+    list_display = ['date', 'image_tag', 'active']

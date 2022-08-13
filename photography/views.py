@@ -95,7 +95,7 @@ def gallery(request):
     return render(request, 'photography/gallery.html', context)
 
 
-def images(request):
+def all_images(request):
     images = Image.objects.all().order_by("-posted_on")
     context = {
         'images': images,

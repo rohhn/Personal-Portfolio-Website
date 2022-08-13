@@ -119,3 +119,9 @@ class TravelDiary(models.Model):
         self.title = self.title.lower().strip()
 
         super(TravelDiary, self).save(*args, **kwargs)
+
+
+class ProfilePhoto(models.Model):
+    image = models.ImageField(upload_to='profile/')
+    active = models.BooleanField(default=False)
+    date = models.DateTimeField(default=timezone.now, editable=False)
