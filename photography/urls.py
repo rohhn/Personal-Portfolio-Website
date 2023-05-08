@@ -1,14 +1,14 @@
 from django.urls import path
-from django.views.generic.base import TemplateView
 
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('gallery/', views.gallery, name='gallery'),
-    path('gallery/<str:genre_name>', views.genre, name='genre'),
-    path('gallery/image/<int:pk>/', views.image, name='image'),
-    path('gallery/all/', views.all_images, name='all_images'),
-    path('about/', views.about, name='about'),
-    path('travels/<str:diary_name>/', views.travel_diary, name='travel_diary')
+    path('', views.landing_page_view, name='index'),
+    path('gallery/', views.gallery_page_view, name='gallery'),
+    path('about/', views.about_page_view, name='about'),
+    path('travels/<int:diary_id>/', views.single_diary_view, name='travel_diary'),
+    path('travels/', views.all_diaries_view, name='travel_diaries'),
+    path('projects/<int:project_id>/', views.single_project_view, name='project'),
+    path('projects/', views.all_projects_view, name='projects'),
+    path('images/', views.gallery_page_view, name="Images")
 ]

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block Title %}
+{{block.super}} | Gallery
+{% endblock %}
+
+{% block head-content %}
+{% endblock %}
+{% block inside-main-tag %}
+{% endblock %}
+
+{% block inside-main-div %}
+<section class="module pt-3 pb-0">
+            <div class="home-module home-height-auto container-fluid bg-dark">
+            <div class="row">
+              <div class="col-sm-12">
+                <ul class="filter font-alt" id="filters">
+                  <li><a class="current wow fadeInUp" href="#" data-filter="featured">Featured</a></li>
+                  {% for genre in genres %}
+                  <li><a class="wow fadeInUp" href="#" data-wow-delay="0.2s" data-filter="{{genre.id}}">{{genre.name}}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          {% if image_grid_html %}
+            <ul class="works-grid works-grid-masonry works-grid-3 works-hover-d" id="works-grid">
+                {{image_grid_html|safe}}
+            </ul>
+            <div class="container-fluid text-center" id="load-more-images" style="margin-top:2rem; margin-bottom:2rem;">
+                <a class="btn btn-border-w btn-round" data-next-page="{{page_details.next_page}}">Load More</a>
+            </div>
+          {% else %}
+            <h4 class="font-alt text-center">No images here.</h4>
+          {% endif %}
+
+        </section>
+{% endblock %}
+
+
+{% block scripts-content %}
+<script>
+    $(document).ready(function() {
+
+        if ("{{ page_details.has_next }}" == "True") {
+            document.getElementById('load-more-images').style.display='block';
+        } else {
+            document.getElementById('load-more-images').style.display='none';
+        }
+    });
+</script>
+{% endblock %}

@@ -6,6 +6,7 @@ from .models import *
 class AlbumAdmin(admin.ModelAdmin):
     name = 'Album Name'
     hashtags = 'Hashtags'
+    travel_date = "Travel Date"
 
 
 @admin.register(Image)
@@ -16,12 +17,12 @@ class ImageAdmin(admin.ModelAdmin):
     feature = 'Feature Image'
 
     # show a thumbnail of the uploaded image on admin page
-    def image_tag(self, obj):
+    def image_tb(self, obj):
         return html.mark_safe('<img src="%s" width="150" height="150" />' % obj.thumbnail.url)
-    image_tag.short_description = "image"
+    image_tb.short_description = "image"
 
     # List of fields to display
-    list_display = ['title', 'album', 'genre', 'image_tag']
+    list_display = ['pk', 'title', 'album', 'genre', 'image_tb']
     list_filter = ['genre', 'album', 'feature']
 
 
@@ -29,11 +30,20 @@ class ImageAdmin(admin.ModelAdmin):
 class TravelDiaryAdmin(admin.ModelAdmin):
     name = 'Name'
     title = "Title"
-    style_formats = 'Style tag'
-    content = 'Content)'
+    content = 'Content'
 
     # List of fields to display
-    list_display = ['name', 'title', 'album']
+    list_display = ['name', 'title']
+
+
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    name = 'Name'
+    title = "Title"
+    content = 'Content'
+
+    # List of fields to display
+    list_display = ['name', 'title']
 
 
 @admin.register(Genre)
@@ -45,7 +55,19 @@ class GenreAdmin(admin.ModelAdmin):
 class ProfilePhotoAdmin(admin.ModelAdmin):
 
     def image_tag(self, obj):
-        return html.mark_safe('<img src="%s" width="150" height="150" />' % obj.image.url)
+        return html.mark_safe('<img src="%s" width="150" height="150" />' % obj.thumbnail.url)
     image_tag.short_description = "image"
 
     list_display = ['date', 'image_tag', 'active']
+    list_filter = ['active']
+
+
+@admin.register(LandingImage)
+class LandingImagesAdmin(admin.ModelAdmin):
+
+    def image_tag(self, obj):
+        return html.mark_safe('<img src="%s" width="150" height="150" />' % obj.thumbnail.url)
+    image_tag.short_description = "image"
+
+    list_display = ['date', 'image_tag', 'active']
+    list_filter = ['active']

@@ -1,14 +1,6 @@
 [
   {
     "pk": 1,
-    "model": "photography.Album",
-    "fields": {
-      "name": "misc",
-      "hashtags": null
-    }
-  },
-  {
-    "pk": 1,
     "model": "photography.Genre",
     "fields": {
       "name": "astrophotography"
