@@ -1,3 +1,5 @@
+import random
+
 from django.http.response import Http404, JsonResponse, HttpResponse
 from django.shortcuts import render
 from django.template import Template, Context
@@ -46,9 +48,12 @@ def landing_page_view(request):
 
 def about_page_view(request):
     profile_photos = ProfilePhoto.objects.filter(active=True).order_by('?')
+    background_image = profile_photos[random.randint(0, profile_photos.count() - 1)]
+    profile_photos = profile_photos[:5]
 
     context = {
         'navbar_elements': get_navbar_elements(request),
+        'background_image': background_image,
         'profile_photos': profile_photos
     }
     return render(request, 'photography/about.html', context)
