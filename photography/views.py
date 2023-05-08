@@ -140,7 +140,6 @@ def make_image_grid(images):
 
 
 def gallery_page_view(request):
-    print(request.GET)
 
     all_genres = Genre.objects.all()
     selected_genre_id = request.GET.get("filter", "featured")
@@ -148,12 +147,12 @@ def gallery_page_view(request):
     page_no = int(request.GET.get("page_no", 1))
 
     if selected_genre_id == "featured":
-        response = gallery_actions.get_featured_images(paginate=paginate, page_no=page_no, n=3)
+        response = gallery_actions.get_featured_images(paginate=paginate, page_no=page_no, n=5)
     else:
-        response = gallery_actions.get_images_by_genre(selected_genre_id, paginate=paginate, page_no=page_no, n=3)
+        response = gallery_actions.get_images_by_genre(selected_genre_id, paginate=paginate, page_no=page_no, n=5)
 
     grid_only = bool(request.GET.get("grid_only", False))
-    print(f"grid only: {grid_only}")
+
     if not grid_only:
         print("rendering")
         context = {
