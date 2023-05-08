@@ -119,6 +119,15 @@ def all_projects_view(request):
 
 
 def make_image_grid(images):
+    """
+    Create the image grid to show in gallery
+
+    Add this to add a caption to the images
+    '''<div class="work-caption font-alt">
+        <h3 class="work-title">{image.title}</h3>
+        <div class="work-descr">{image.album.name}</div>
+    </div>'''
+    """
 
     html_content = []
     for image in images:
@@ -127,10 +136,6 @@ def make_image_grid(images):
             <li class="work-item gallery-item">
               <a class="gallery" title="{image.title}" href="{image.image.url}">
                 <div class="work-image"><img src="{image.thumbnail.url}" alt="Portfolio Item"/></div>
-                <div class="work-caption font-alt">
-                    <h3 class="work-title">{image.title}</h3>
-                    <div class="work-descr">{image.album.name}</div>
-                </div>
               </a>
             </li>"""
         )
