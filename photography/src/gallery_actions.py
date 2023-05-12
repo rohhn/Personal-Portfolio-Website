@@ -61,7 +61,7 @@ def get_images_by_album(album_id, paginate=False, page_no=1, n=9):
 
 def get_featured_images(paginate=False, page_no=1, n=9):
 
-    images = Image.objects.filter(feature=True).order_by('-posted_on')[:n]
+    images = Image.objects.filter(feature=True).order_by('-posted_on')
 
     if paginate:
         paginator = Paginator(images, per_page=n, allow_empty_first_page=True)

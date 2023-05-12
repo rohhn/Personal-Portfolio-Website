@@ -157,14 +157,13 @@ def gallery_page_view(request):
     page_no = int(request.GET.get("page_no", 1))
 
     if selected_genre_id == "featured":
-        response = gallery_actions.get_featured_images(paginate=paginate, page_no=page_no, n=5)
+        response = gallery_actions.get_featured_images(paginate=paginate, page_no=page_no, n=6)
     else:
-        response = gallery_actions.get_images_by_genre(selected_genre_id, paginate=paginate, page_no=page_no, n=5)
+        response = gallery_actions.get_images_by_genre(selected_genre_id, paginate=paginate, page_no=page_no, n=6)
 
     grid_only = bool(request.GET.get("grid_only", False))
 
     if not grid_only:
-        print("rendering")
         context = {
             'genres': all_genres,
             'image_grid_html': make_image_grid(response["data"]),
