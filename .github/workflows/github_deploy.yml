@@ -30,7 +30,7 @@ jobs:
           python manage.py migrate
           
           # Update static files
-          python manage.py collectstatic
+          python manage.py collectstatic --noinput
           
           # restart web server
           sudo /bin/systemctl restart django_portfolio.service django_portfolio.socket nginx
