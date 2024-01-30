@@ -5,118 +5,178 @@
     <title>
         {% block Title %}Rohan Deshmukh{% endblock %}
     </title>
-    <!-- <link rel="stylesheet" type="text/css" href="{% static 'photography/assets/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"> -->
-    <link rel="stylesheet" href="{% static 'photography/assets/css/mdb.min.css' %}">
-    <link rel="stylesheet" href="{% static 'photography/assets/css/parallax.css' %}">
-    <link rel="stylesheet" href="{% static 'photography/assets/css/aos.css' %}">
-    <link rel="stylesheet" href="{% static 'photography/assets/css/hover.css' %}">
-    <link rel="stylesheet" href="{% static 'photography/assets/css/mycss.css' %}">
-    <link rel="stylesheet" href="{% static 'photography/assets/css/magnific-popup.css' %}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Indian photographer interested in landscape, astrophotography. Developer in Python, Machine learning and cloud automation.">
+	<meta name="keywords" content="photographer, astrophotography, india, developer, python, machine learning">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+    Favicons
+    =============================================
+    -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'photography/assets/images/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'photography/assets/images/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'photography/assets/images/favicons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'photography/assets/images/favicons/site.webmanifest' %}">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#000000">
+    <!--
+    Stylesheets
+    =============================================
+    -->
+
+    <!-- CDN Links -->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">-->
+
+
+    <!-- Default stylesheets-->
+    <link type="text/css" rel="stylesheet" href="{% static 'photography/assets/lib/bootstrap/dist/css/bootstrap.min.css' %}" >
+    <link type="text/css" rel="stylesheet" href="{% static 'photography/assets/lib/bootstrap/dist/css/bootstrap-utilities.min.css' %}" >
+    <!-- Template specific stylesheets-->
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" >
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Volkhov:400i" >
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" >
+    <link type="text/css" rel="stylesheet" href="{% static 'photography/assets/lib/animate.css/animate.css' %}" >
+    <link type="text/css" rel="stylesheet" href="{% static 'photography/assets/lib/components-font-awesome/css/font-awesome.min.css' %}" >
+    <link type="text/css" rel="stylesheet" href="{% static 'photography/assets/lib/et-line-font/et-line-font.css' %}" >
+    <link type="text/css" rel="stylesheet" href="{% static 'photography/assets/lib/flexslider/flexslider.css' %}" >
+    <link type="text/css" rel="stylesheet" href="{% static 'photography/assets/lib/owl.carousel/dist/assets/owl.carousel.min.css' %}" >
+    <link type="text/css" rel="stylesheet" href="{% static 'photography/assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css' %}" >
+    <link type="text/css" rel="stylesheet" href="{% static 'photography/assets/lib/magnific-popup/dist/magnific-popup.css' %}" >
+    <link type="text/css" rel="stylesheet" href="{% static 'photography/assets/lib/simple-text-rotator/simpletextrotator.css' %}" >
+    <!-- Main stylesheet and color file-->
+    <link type="text/css" rel="stylesheet" href="{% static 'photography/assets/css/style.css' %}" >
+    <link type="text/css" rel="stylesheet" id="color-scheme" href="{% static 'photography/assets/css/colors/default.css' %}" >
+
+    <style>
+        .flex-direction-nav .flex-prev {
+          cursor: url({% static 'photography/assets/images/prev-light.png' %}), e-resize;
+        }
+
+        .flex-direction-nav .flex-next {
+          cursor: url({% static 'photography/assets/images/next-light.png' %}), e-resize;
+        }
+
+    </style>
+
     {% block head-content %}{% endblock %}
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EVTQB4KSKK"></script>
     <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-EVTQB4KSKK');
-
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EVTQB4KSKK');
     </script>
 </head>
-<body>
-    <div id="body-bg-1"></div>
-    <div id="body-bg-2"></div>
-    <div id="body-bg-3"></div>
 
-    <nav class="navbar sticky-top navbar-expand-lg fw-light px-5 justify-content-end" id="navbar">
-        <a id="navbar-logo" class="navbar-brand px-3 justify-content start" href="/">
-            <img class="navbar-brand-img" style="max-height: 50px;" src="{% static 'photography/assets/images/navbar_logo.png' %}" alt="Rohan">
-        </a>
-        <button class="navbar-toggler text-light bg-transparent" type="button" data-mdb-toggle="collapse"
-                data-mdb-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarToggler">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link hover-underline-center-out" href="/gallery">Gallery</a>
+<body data-spy="scroll" data-target=".onpage-navigation" data-offset="50">
+    <main>
+    <!-- Page Preloder -->
+    <div class="page-loader">
+        <div class="loader">Loading...</div>
+    </div>
+
+    <nav class="navbar navbar-custom navbar-fixed-top navbar-transparent" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+              <img id="navbar-logo-img" src="{% static 'photography/assets/images/navbar_logo.png' %}" alt="Rohan">
+            </a>
+          </div>
+          <div class="collapse navbar-collapse" id="custom-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item"><a href="/">Home</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" href="/gallery" data-toggle="dropdown">Photography</a>
+                    {% if navbar_elements.gallery_options %}
+                    <ul class="dropdown-menu">
+                        {% for item in navbar_elements.gallery_options %}
+                            <li class="nav-item"><a href="/gallery?filter={{item.id}}">{{item.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
                 </li>
                 {% if navbar_elements.travel_diaries %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="link" data-mdb-toggle="dropdown" aria-expanded="false">
-                      Travel Diaries
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
-                        {% for diary in navbar_elements.travel_diaries %}
-                          <li>
-                            <a class="dropdown-item" href="/travels/{{diary.name}}" style="text-transform:capitalize">{{diary.title}}</a>
-                          </li>
+                <li class="dropdown"><a class="dropdown-toggle" href="/travels" data-toggle="dropdown">Travel Diaries</a>
+                    <ul class="dropdown-menu">
+                        {% for item in navbar_elements.travel_diaries %}
+                            <li class="nav-item"><a href="/travels/{{item.id}}">{{item.name}}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
                 {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link hover-underline-center-out" href="/about">About me</a>
+                {% if navbar_elements.all_projects %}
+                <li class="dropdown"><a class="dropdown-toggle" href="/projects" data-toggle="dropdown">Projects</a>
+                    <ul class="dropdown-menu">
+                        {% for item in navbar_elements.all_projects %}
+                            <li class="nav-item"><a href="/projects/{{item.id}}">{{item.title}}</a></li>
+                        {% endfor %}
+                    </ul>
                 </li>
+                {% endif %}
+                <li class="nav-item"><a href="/about">About</a></li>
             </ul>
+          </div>
         </div>
-    </nav>
+      </nav>
 
-    <main class="container-fluid pb-3 position-relative">
-        {% block main-content %}{% endblock %}
+      {% block inside-main-tag %}{% endblock %}
+        <div class="main">
+          {% block inside-main-div %}{% endblock %}
+          <footer class="footer bg-dark">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-6">
+                  <p class="copyright font-alt">&copy; 2017&nbsp;<a href="https://themewagon.github.io/titan/index.html">TitaN</a>, All Rights Reserved</p>
+                </div>
+                <div class="col-sm-6">
+                  <div class="footer-social-links">
+                    <a target="_blank" href="https://www.instagram.com/cosmicpasta/"><i class="fa fa-instagram"></i></a>
+                    <a target="_blank" href="https://github.com/rohhn"><i class="fa fa-github"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+          <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+        </div>
     </main>
 
-    <footer class="fw-lighter fs-6 mt-3">
-        <div class="container-fluid py-2 mt-5 bg-dark-opaque">
-            <div class="row row-cols-2">
-                <div class="col text-start px-5">
-                            <span>
-                                <p class="my-auto">&#169; 2021 Rohan Deshmukh | Built with Python Django</p>
-                            </span>
+	<!--
+    JavaScripts
+    =============================================
+    -->
 
-                </div>
-                <div class="col text-end px-5">
-                    <ul class="list-inline list-unstyled my-auto">
-                        <li class="list-inline-item mx-2">
-                            <a target="_blank" href="https://www.instagram.com/cosmicpasta/"><i
-                                    class="fab fa-instagram white-text hvr-grow" style="font-size: 1.25rem;"></i></a>
-                        </li>
-                        <li class="list-inline-item mx-2">
-                            <a target="_blank" href="https://github.com/rohhn/"><i class="fab fa-github white-text hvr-grow"
-                                                                                   style="font-size: 1.25rem;"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- CDN Links -->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>-->
+
+
+    <script src="{% static 'photography/assets/lib/jquery/dist/jquery.js' %}"></script>
+    <script src="{% static 'photography/assets/lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'photography/assets/lib/wow/dist/wow.js' %}"></script>
+    <script src="{% static 'photography/assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js' %}"></script>
+    <script src="{% static 'photography/assets/lib/isotope/dist/isotope.pkgd.js' %}"></script>
+    <script src="{% static 'photography/assets/lib/imagesloaded/imagesloaded.pkgd.js' %}"></script>
+    <script src="{% static 'photography/assets/lib/flexslider/jquery.flexslider.js' %}"></script>
+    <script src="{% static 'photography/assets/lib/owl.carousel/dist/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'photography/assets/lib/smoothscroll.js' %}"></script>
+    <script src="{% static 'photography/assets/lib/magnific-popup/dist/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'photography/assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js' %}"></script>
+    <script src="{% static 'photography/assets/js/plugins.js' %}"></script>
+    <script src="{% static 'photography/assets/js/main.js' %}"></script>
+
 </body>
 
-<script>
-        window.onscroll = () => {
-        const nav = document.querySelector('nav');
-        const footer = document.querySelector('footer');
-        const body = document.querySelector('main');
-        if(this.scrollY <= 100) nav.className = 'navbar sticky-top navbar-expand-md navbar-dark bg-transparent fw-light px-5'; else nav.className = 'navbar sticky-top navbar-expand-md navbar-dark bg-dark fw-light px-5';
-      };
+{% block scripts-content %}
+{% endblock %}
 
-</script>
-
-<script type="text/javascript" src="{% static 'photography/assets/js/mdb.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'photography/assets/js/aos.js' %}"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<!-- <script type="text/javascript" src="{% static 'photography/assets/js/jquery.magnific-popup.min.js' %}"></script> -->
-<script type="text/javascript" src="{% static 'photography/assets/js/jquery.magnific-popup.js' %}"></script>
-<script type="text/javascript" src="{% static 'photography/assets/js/myjs.js' %}"></script>
-
-<!-- <script>
-
-</script> -->
-
-{% block scripts-content %}{% endblock %}
 </html>

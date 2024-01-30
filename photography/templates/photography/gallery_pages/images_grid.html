@@ -1,0 +1,9 @@
+{% for image in images %}
+    <li class="work-item"><a href="#">
+        <div class="work-image"><img src="{{image.thumbnail.url}}" alt="Portfolio Item"/></div>
+        <div class="work-caption font-alt">
+            <h3 class="work-title">{{image.title}}</h3>
+            <div class="work-descr">Illustration</div>
+        </div>
+    </a></li>
+{% endfor %}

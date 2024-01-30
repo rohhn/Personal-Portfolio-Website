@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block Title %}
+{{block.super}}
+{% endblock %}
+
+{% block head-content %}
+{% endblock %}
+
+{% block inside-main-div %}
+<section class="module home-module home-height-auto" style="padding-bottom:30px">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-sm-offset-0">
+        {% for diary in all_diaries %}
+          <div class="post">
+            <div class="post-header font-alt">
+              <h2 class="post-title"><a href="/travels/{{diary.id}}">{{diary.name}} | {{diary.title}}</a></h2>
+              <div class="post-meta">By&nbsp;{{diary.author}} | {{diary.travel_date|date:"M d, Y"}}</div>
+            </div>
+            {% if diary.thumbnail %}
+              <div class="post-thumbnail"><a href="/travels/{{diary.id}}"><img src="{{diary.thumbnail.url}}" alt="{{diary.name}} Thumbnail"/></a></div>
+            {% endif %}
+            {% if diary.summary %}
+              <div class="post-entry">
+                <p>{{diary.summary|safe}}</p>
+              </div>
+            {% endif %}
+            <div class="post-more"><a class="more-link" href="/travels/{{diary.id}}">Read more</a></div>
+          </div>
+        {% endfor %}
+        {% if page.has_previous or page.has_next %}
+          <div class="pagination font-alt">
+            {% if page.has_previous %}
+              <a href='/travels?page={{page.current|add:"-1"}}'><i class="fa fa-angle-left"></i></a>
+            {% endif %}
+            {% if page.has_next %}
+              <a href='/travels?page={{page.current|add:"1"}}'><i class="fa fa-angle-right"></i></a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts-content %}
+{% endblock %}

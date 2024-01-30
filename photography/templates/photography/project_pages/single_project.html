@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block Title %}
+{{block.super}}
+{% endblock %}
+
+{% block head-content %}
+{% endblock %}
+
+{% block inside-main-tag %}
+
+{% if project.thumbnail %}
+<section class="home-section home-parallax home-fade bg-dark-30" id="home" data-background="{{project.thumbnail.url}}">
+{% else %}
+<section class="home-section home-parallax home-fade bg-dark-30" id="home">
+{% endif %}
+        <div class="titan-caption">
+          <div class="caption-content">
+            <div class="font-alt mb-40 titan-title-size-4">{{project.name}}</div>
+              <div class="font-alt mb-10 titan-title-size-1" style="font-size:12px">{{project.title}}</div>
+              {% if project.source_code_link or project.project_link %}
+                <div class="mb-10 titan-title-size-1 fs-1">
+                  {% if project.source_code_link %}
+                    <a href="{{project.source_code_link}}"><i class="fa fa-github"></i></a>
+                  {% endif %}
+
+                  {%if project.project_link %}
+                    &nbsp;<a href="{{project.project_link}}"><i class="fa fa-globe"></i></a>
+                  {% endif %}
+                </div>
+              {% endif %}
+          </div>
+        </div>
+      </section>
+{% endblock %}
+
+{% block inside-main-div %}
+<section class="module" style="padding-top:1rem; padding-bottom:2rem;">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12 col-sm-offset-0">
+                <div class="post p-5 pt-20">
+                  <div class="post-header font-alt">
+                    <div class="post-meta text-center mb-20">By&nbsp;{{project.author}} | {{project.created_on|date:"M d, Y"}}</div>
+                    <div class="divider-w mb-20"></div>
+                  </div>
+                  <div class="post-entry" style="border-top:none;">
+                      {{project.content|safe}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+{% endblock %}
+
+{% block scripts-content %}
+{% endblock %}

@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'storages',
     'photography',
-    'django_cleanup.apps.CleanupConfig'
+    'django_cleanup.apps.CleanupConfig',
+    'ckeditor'
 ]
 
 MIDDLEWARE = [
@@ -136,7 +137,7 @@ if os.getenv('USE_S3') == "True":
 
     AWS_S3_OBJECT_PARAMETERS = {
         'CacheControl': 'max-age=86400',
-    }  ## set common parameters for http
+    }  # set common parameters for http
 
     AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
     AWS_S3_REGION_NAME = os.environ['AWS_S3_REGION_NAME']
@@ -162,3 +163,22 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 FIXTURE_DIRS = [BASE_DIR / 'fixtures']
+
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_ALLOW_NONIMAGE_FILES = True
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'skin': 'n1theme',
+        'uiColor': '#b7d6ec',
+        'apiKey': "tSh8rk1U",
+        'extraPlugins': ','.join(
+            [
+                'html5video',
+                'uicolor',
+                'N1ED-editor'
+            ])
+    },
+}

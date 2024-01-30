@@ -5,39 +5,44 @@
 {% endblock %}
 
 {% block head-content %}
-<link rel="stylesheet" href="{% static 'photography/assets/css/masonry-index.css' %}">
 {% endblock %}
 
-{% block main-content %}
-<section id="intro" class="">
-    <div class="container-fluid text-center position-fixed top-25">
-        <div class="row">
-            <div>
-                <img class="img-fluid main-logo" data-aos="fade-up" data-aos-delay="100"
-                     src="{% static 'photography/assets/images/main_index_logo.png' %}" alt="Rohan D">
+{% block inside-main-tag %}
+    <section class="home-section home-parallax home-fade home-full-height" id="home">
+        <div class="hero-slider">
+          {% if featured_images %}
+          <ul class="slides">
+            {% for image in featured_images %}
+            <li class="bg-dark-30 bg-dark" style="background-image:url({{image.thumbnail.url}});">
+              <div class="titan-caption">
+                <div class="caption-content">
+                  <div class="font-alt mb-50"><img style="max-height: 25vh; max-width: 75vw" src="{% static 'photography/assets/images/main_index_logo.png' %}" alt="Rohan D"></div>
+                  <div class="font-alt mb-10 titan-title-size-1" style="font-size:12px">Programmer, Photographer</div>
+                  <div class="section-scroll social-links-hr">
+                    <a target="_blank" href="https://www.instagram.com/cosmicpasta/"><i class="fa fa-instagram"></i></a>
+                    <a target="_blank" href="https://github.com/rohhn"><i class="fa fa-github"></i></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <div class="titan-caption">
+            <div class="caption-content">
+              <div class="font-alt mb-50"><img style="max-height: 25vh; max-width: 75vw" src="{% static 'photography/assets/images/main_index_logo.png' %}" alt="Rohan D"></div>
+              <div class="font-alt mb-10 titan-title-size-1" style="font-size:12px">Programmer, Photographer</div>
+              <div class="section-scroll social-links-hr">
+                <a target="_blank" href="https://www.instagram.com/cosmicpasta/"><i class="fa fa-instagram"></i></a>
+                <a target="_blank" href="https://github.com/rohhn"><i class="fa fa-github"></i></a>
+              </div>
             </div>
+          </div>
+          {% endif %}
         </div>
-        <div class="row mt-4 mb-2" data-aos="fade-up" data-aos-delay="110">
-            <p class="fw-lighter fs-5">Programmer, Photographer</p>
-        </div>
-        <div class="row my-2" data-aos="fade-up" data-aos-delay="110">
-            <div class="text-center">
-                <ul class="list-inline list-unstyled">
-                    <li class="list-inline-item mx-2">
-                        <a target="_blank" href="https://www.instagram.com/cosmicpasta/"><i
-                                class="fab fa-instagram white-text hvr-grow" style="font-size: 1.35rem;"></i></a>
-                    </li>
-                    <li class="list-inline-item mx-2">
-                        <a target="_blank" href="https://github.com/rohhn"><i class="fab fa-github white-text hvr-grow"
-                                                                              style="font-size: 1.35rem;"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
+      </section>
 {% endblock %}
+
 
 {% block scripts-content %}
 <script>
@@ -47,14 +52,12 @@
         let nav = document.querySelector('nav');
 
         // Hide the logo on landing page
-        document.getElementById('navbar-logo').style.display='none';
+        document.getElementById('navbar-logo-img').style.display='none';
 
         // Hide the footer on landing page
         let footer = document.querySelector('footer');
         footer.style.display='none';
 
-        let intro_section = document.querySelector('#intro');
-        intro_section.style.height = (body.clientHeight - nav.clientHeight) + 'px';
     });
 
 </script>
