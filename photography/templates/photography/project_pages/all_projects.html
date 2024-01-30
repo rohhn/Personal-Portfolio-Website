@@ -22,11 +22,11 @@
                 {% if project.source_code_link or project.project_link %}
                 <div class="post-meta">
                   {% if project.source_code_link %}
-                    <a href="{{project.source_code_link}}"><u>Source code</u></a>
+                    <a href="{{project.source_code_link}}" target="_blank"><u>Source code</u></a>
                   {% endif %}
 
                   {%if project.project_link %}
-                   | <a href="{{project.project_link}}"><u>Project link</u></a>
+                   | <a href="{{project.project_link}}" target="_blank"><u>Project link</u></a>
                   {% endif %}
                 </div>
                 {% endif %}
