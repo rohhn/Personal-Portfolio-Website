@@ -21,11 +21,11 @@
               {% if project.source_code_link or project.project_link %}
                 <div class="mb-10 titan-title-size-1 fs-1">
                   {% if project.source_code_link %}
-                    <a href="{{project.source_code_link}}" target="_blank"><i class="fa fa-github"></i></a>
+                    <a href="{{project.source_code_link}}" target="_blank" title="Soource Code"><i class="fa fa-github"></i></a>
                   {% endif %}
 
                   {%if project.project_link %}
-                    &nbsp;<a href="{{project.project_link}}" target="_blank"><i class="fa fa-globe"></i></a>
+                    &nbsp;<a href="{{project.project_link}}" target="_blank" title="Project Link"><i class="fa fa-globe"></i></a>
                   {% endif %}
                 </div>
               {% endif %}
