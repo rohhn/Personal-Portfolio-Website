@@ -8,6 +8,8 @@ class AlbumAdmin(admin.ModelAdmin):
     hashtags = 'Hashtags'
     travel_date = "Travel Date"
 
+    list_display = ['name', 'travel_date']
+
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
@@ -22,7 +24,7 @@ class ImageAdmin(admin.ModelAdmin):
     image_tb.short_description = "image"
 
     # List of fields to display
-    list_display = ['pk', 'title', 'album', 'genre', 'image_tb']
+    list_display = ['title', 'pk', 'album', 'genre', 'image_tb']
     list_filter = ['genre', 'album', 'feature']
 
 
@@ -31,9 +33,10 @@ class TravelDiaryAdmin(admin.ModelAdmin):
     name = 'Name'
     title = "Title"
     content = 'Content'
+    publish = 'Published'
 
     # List of fields to display
-    list_display = ['name', 'title']
+    list_display = ['name', 'title', 'publish']
 
 
 @admin.register(Project)

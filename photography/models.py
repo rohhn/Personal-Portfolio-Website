@@ -119,12 +119,19 @@ class Image(models.Model):
             self.hashtags = self.hashtags.lower().strip().replace("#", "")
         if not self.create_thumbnail():
             raise Exception("Error saving thumbnail.")
+
+        if not self.image:  # if image is removed, delete the thumbnail too
+            if self.thumbnail and os.path.isfile(self.thumbnail.path):
+                os.remove(self.thumbnail.path)
+                self.thumbnail = None
         super(Image, self).save(*args, **kwargs)
 
 
 class TravelDiary(models.Model):
+    publish = models.BooleanField(default=False)
     name = models.CharField(max_length=150)
     title = models.CharField(max_length=150)
+    meta_keywords = models.CharField(max_length=500, null=True)
     summary = models.TextField(null=True)
     author = models.CharField(max_length=150)
     travel_date = models.DateField(default=timezone.now)
@@ -170,6 +177,10 @@ class TravelDiary(models.Model):
         if self.image:
             if not self.create_thumbnail():
                 raise Exception("Error saving thumbnail.")
+        else:  # if image is removed, delete the thumbnail too
+            if self.thumbnail and os.path.isfile(self.thumbnail.path):
+                os.remove(self.thumbnail.path)
+                self.thumbnail = None
         super(TravelDiary, self).save(*args, **kwargs)
 
 
@@ -178,11 +189,13 @@ class Project(models.Model):
     title = models.CharField(max_length=150)
     summary = models.TextField(null=True)
     author = models.CharField(max_length=150)
-    travel_date = models.DateField(default=timezone.now)
+    publish_date = models.DateField(default=timezone.now)
     content = RichTextUploadingField()
     created_on = models.DateTimeField(default=timezone.now, editable=False)
     image = models.ImageField(upload_to=rename_image, null=True, blank=True)
     thumbnail = models.ImageField(upload_to=rename_thumbnail, editable=False, null=True, blank=True)
+    source_code_link = models.URLField(null=True, blank=True)
+    project_link = models.URLField(null=True, blank=True)
 
     def __str__(self):
         return self.name.capitalize()
@@ -221,6 +234,10 @@ class Project(models.Model):
         if self.image:
             if not self.create_thumbnail():
                 raise Exception("Error saving thumbnail.")
+        else:  # if image is removed, delete the thumbnail too
+            if self.thumbnail and os.path.isfile(self.thumbnail.path):
+                os.remove(self.thumbnail.path)
+                self.thumbnail = None
         super(Project, self).save(*args, **kwargs)
 
 
@@ -264,6 +281,11 @@ class ProfilePhoto(models.Model):
 
         if not self.create_thumbnail():
             raise Exception("Error saving thumbnail.")
+
+        if not self.image:  # if image is removed, delete the thumbnail too
+            if self.thumbnail and os.path.isfile(self.thumbnail.path):
+                os.remove(self.thumbnail.path)
+                self.thumbnail = None
         super(ProfilePhoto, self).save(*args, **kwargs)
 
 
@@ -307,4 +329,10 @@ class LandingImage(models.Model):
 
         if not self.create_thumbnail():
             raise Exception("Error saving thumbnail.")
+
+        if not self.image:  # if image is removed, delete the thumbnail too
+            if self.thumbnail and os.path.isfile(self.thumbnail.path):
+                os.remove(self.thumbnail.path)
+                self.thumbnail = None
+
         super(LandingImage, self).save(*args, **kwargs)

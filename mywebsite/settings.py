@@ -166,4 +166,19 @@ FIXTURE_DIRS = [BASE_DIR / 'fixtures']
 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "uploads/"
-CKEDITOR_ALLOW_NONIMAGE_FILES = False
+CKEDITOR_ALLOW_NONIMAGE_FILES = True
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'skin': 'n1theme',
+        'uiColor': '#b7d6ec',
+        'apiKey': "tSh8rk1U",
+        'extraPlugins': ','.join(
+            [
+                'html5video',
+                'uicolor',
+                'N1ED-editor'
+            ])
+    },
+}

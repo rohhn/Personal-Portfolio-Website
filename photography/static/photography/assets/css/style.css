@@ -1012,13 +1012,13 @@ General Styles - FlexSlider
 .flex-direction-nav .flex-prev {
   opacity: 0;
   left: 0;
-  cursor: url({% static 'photography/assets/images/prev-light.png' %}), e-resize;
+  /*cursor: url({% static 'photography/assets/images/prev-light.png' %}), e-resize;*/
 }
 
 .flex-direction-nav .flex-next {
   opacity: 0;
   right: 0;
-  cursor: url({% static 'photography/assets/images/next-light.png' %}), e-resize;
+  /*cursor: url({% static 'photography/assets/images/next-light.png' %}), e-resize;*/
 }
 
 .flex-control-nav {
@@ -2171,7 +2171,6 @@ Google map
   line-height: 1.4;
   font-size: 22px;
   color: #f2f2f2;
-  margin: 0;
 }
 
 .post-header {

@@ -22,7 +22,7 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', include('photography.urls')),
                   path('ckeditor/', include('ckeditor_uploader.urls')),
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler404 = "photography.views.handler404"
 handler500 = "photography.views.handler500"

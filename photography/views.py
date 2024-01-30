@@ -13,7 +13,7 @@ def get_navbar_elements(request):
     """
     Return a list of all menu items required for the Navbar
     """
-    travel_diaries = TravelDiary.objects.all().order_by("-travel_date")[:5]
+    travel_diaries = TravelDiary.objects.filter(publish=True).order_by("-travel_date")[:5]
     projects = Project.objects.all().order_by("-created_on")[:5]
 
     all_genres = Genre.objects.all()
@@ -62,6 +62,8 @@ def about_page_view(request):
 def single_diary_view(request, diary_id):
     try:
         diary = TravelDiary.objects.get(id=diary_id)
+        # if not diary.publish:
+        #     return handler404(request, "404 error")
     except diary.DoesNotExist:
         return handler404(request, "404 error")
     context = {
@@ -73,7 +75,7 @@ def single_diary_view(request, diary_id):
 
 def all_diaries_view(request):
     page_no = request.GET.get("page", 1)
-    all_diaries = TravelDiary.objects.all().order_by('-travel_date')
+    all_diaries = TravelDiary.objects.filter(publish=True).order_by('-travel_date')
 
     paginator = Paginator(all_diaries, per_page=3)
     requested_page = paginator.get_page(page_no)
@@ -100,14 +102,14 @@ def single_project_view(request, project_id):
         'project': project,
         'navbar_elements': get_navbar_elements(request)
     }
-    return render(request, 'photography/projects/single_project.html', context)
+    return render(request, 'photography/project_pages/single_project.html', context)
 
 
 def all_projects_view(request):
     page_no = request.GET.get("page", 1)
-    all_projects = Project.objects.all().order_by('-travel_date')
+    all_projects = Project.objects.all().order_by('-publish_date')
 
-    paginator = Paginator(all_projects, per_page=3)
+    paginator = Paginator(all_projects, per_page=4)
     requested_page = paginator.get_page(page_no)
 
     response = {
@@ -120,7 +122,7 @@ def all_projects_view(request):
         'navbar_elements': get_navbar_elements(request)
     }
 
-    return render(request, 'photography/projects/all_projects.html', response)
+    return render(request, 'photography/project_pages/all_projects.html', response)
 
 
 def make_image_grid(images):

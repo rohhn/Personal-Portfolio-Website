@@ -262,6 +262,23 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
 
         activatePopup();
 
+        function activateSinglePopup() {
+            $(".popup-item").magnificPopup({
+                delegate: 'a',
+                type: 'image',
+//                gallery: {
+//                    enabled: true,
+//                    navigateByImgClick: true
+//                },
+                image: {
+                    titleSrc: 'title',
+                    tError: 'The image could not be loaded.'
+                }
+            });
+        }
+
+        activateSinglePopup();
+
 
         /* ---------------------------------------------- /*
          * Portfolio

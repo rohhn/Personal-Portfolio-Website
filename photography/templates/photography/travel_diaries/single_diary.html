@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block head-content %}
+    <meta name="description" content="{{diary.summary}}">
+    <meta name="keywords" content="{{diary.meta_keywords}}">
 {% endblock %}
 
 {% block inside-main-tag %}
@@ -14,33 +16,33 @@
 {% else %}
 <section class="home-section home-parallax home-fade bg-dark-30" id="home">
 {% endif %}
-        <div class="titan-caption">
-          <div class="caption-content">
-            <div class="font-alt mb-40 titan-title-size-4">{{diary.name}}</div>
-              <div class="font-alt mb-10 titan-title-size-1" style="font-size:12px">{{diary.title}}</div>
-          </div>
-        </div>
-      </section>
+    <div class="titan-caption">
+      <div class="caption-content">
+        <div class="font-alt mb-40 titan-title-size-4">{{diary.name}}</div>
+          <div class="font-alt mb-10 titan-title-size-1" style="font-size:12px">{{diary.title}}</div>
+      </div>
+    </div>
+</section>
 {% endblock %}
 
 {% block inside-main-div %}
 <section class="module" style="padding-top:1rem; padding-bottom:2rem;">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-12 col-sm-offset-0">
-                <div class="post p-5 pt-20">
-                  <div class="post-header font-alt">
-                    <div class="post-meta text-center mb-20">By&nbsp;{{diary.author}} | {{diary.travel_date|date:"M d, Y"}}</div>
-                    <div class="divider-w mb-20"></div>
-                  </div>
-                  <div class="post-entry" style="border-top:none;">
-                      {{diary.content|safe}}
-                  </div>
-                </div>
-              </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-sm-offset-0">
+        <div class="post p-5 pt-20">
+          <div class="post-header font-alt">
+            <div class="post-meta text-center mb-20">By&nbsp;{{diary.author}} | {{diary.travel_date|date:"M d, Y"}}</div>
+            <div class="divider-w mb-20"></div>
           </div>
-        </section>
+          <div class="post-entry" style="border-top:none;">
+              {{diary.content|safe}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}
 
 {% block scripts-content %}
