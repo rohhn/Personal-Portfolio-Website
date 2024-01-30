@@ -12,41 +12,46 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-sm-offset-0">
+        <h1 class="font-alt text-center mb-5 mt-0">Projects</h1>
         {% for project in all_projects %}
         <div class="row">
           <div class="">
-            <div class="post">
-              <div class="post-header font-alt">
-                <h2 class="post-title"><a href="/projects/{{project.id}}">{{project.title}}</a></h2>
-                <div class="post-meta">By&nbsp;{{project.author}} | {{project.created_on|date:"M d, Y"}}</div>
-                {% if project.source_code_link or project.project_link %}
-                <div class="post-meta">
-                  {% if project.source_code_link %}
-                    <a href="{{project.source_code_link}}" target="_blank"><u>Source code</u></a>
+            <div class="post mx-0 my-4 bg-dark" style="--bs-bg-opacity: .3;">
+              <div class="d-flex">
+                <div class="align-self-start flex-grow-1 p-5">
+                  <div class="post-header font-alt">
+                    <h2 class="post-title"><a href="/projects/{{project.id}}">{{project.title}}</a></h2>
+                    <div class="post-meta">By&nbsp;{{project.author}} | {{project.created_on|date:"M d, Y"}}</div>
+                    {% if project.source_code_link or project.project_link %}
+                    <div class="post-meta">
+                      {% if project.source_code_link %}
+                        <a href="{{project.source_code_link}}" target="_blank"><u>Source code</u></a>
+                      {% endif %}
+
+                      {%if project.project_link %}
+                       | <a href="{{project.project_link}}" target="_blank"><u>Project link</u></a>
+                      {% endif %}
+                    </div>
+                    {% endif %}
+                  </div>
+
+                  {% if project.summary %}
+                    <div class="post-entry">
+                      <p>{{project.summary}}</p>
+                    </div>
                   {% endif %}
 
-                  {%if project.project_link %}
-                   | <a href="{{project.project_link}}" target="_blank"><u>Project link</u></a>
-                  {% endif %}
+                  <div class="post-more"><a class="more-link" href="/projects/{{project.id}}">Read more</a></div>
                 </div>
+
+                {% if project.thumbnail %}
+                  <div class="post-thumbnail align-self-end w-25 p-5"><a href="/projects/{{project.id}}"><img src="{{project.thumbnail.url}}" alt="{{project.name}}"/></a></div>
                 {% endif %}
               </div>
 
-              {% if project.thumbnail %}
-                <div class="post-thumbnail"><a href="/projects/{{project.id}}"><img src="{{project.thumbnail.url}}" alt="{{project.name}} Thumbnail"/></a></div>
-              {% endif %}
-
-              {% if project.summary %}
-                <div class="post-entry">
-                  <p>{{project.summary}}</p>
-                </div>
-              {% endif %}
-
-              <div class="post-more"><a class="more-link" href="/projects/{{project.id}}">Read more</a></div>
             </div>
           </div>
         </div>
-
         {% endfor %}
         
         

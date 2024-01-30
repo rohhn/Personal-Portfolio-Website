@@ -2165,6 +2165,7 @@ Google map
 --------------------------------------------------------------*/
 .post {
   margin: 0 0 80px;
+  /*border: 1px solid #c2c2c2;*/
 }
 
 .post-title {
@@ -2183,6 +2184,12 @@ Google map
 }
 
 .post-entry {
+  border-top: 1px dotted #c2c2c2;
+  padding-top: 20px;
+  margin-top: 10px;
+}
+
+.post-entry2 {
   border-top: 1px dotted #c2c2c2;
   padding-top: 20px;
   margin-top: 10px;
