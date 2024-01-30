@@ -14,7 +14,7 @@ def get_navbar_elements(request):
     Return a list of all menu items required for the Navbar
     """
     travel_diaries = TravelDiary.objects.filter(publish=True).order_by("-travel_date")[:5]
-    projects = Project.objects.all().order_by("-created_on")[:5]
+    projects = Project.objects.all().order_by("-publish_date")[:5]
 
     all_genres = Genre.objects.all()
     response = {
