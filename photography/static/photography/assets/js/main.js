@@ -295,11 +295,11 @@ console.log('%c Proudly Crafted with ZiOn.', 'background: #222; color: #bada55')
             }
 
             worksgrid.imagesLoaded(function() {
-                worksgrid.isotope('reloadItems');
                 worksgrid.isotope({
                     layoutMode: worksgrid_mode,
                     itemSelector: '.work-item'
                 });
+                worksgrid.isotope('reloadItems');
             });
         }
 
